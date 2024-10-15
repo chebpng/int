@@ -16,9 +16,13 @@ type
     Button2: TButton;
     Edit1: TEdit;
     Edit2: TEdit;
+    Image1: TImage;
+    Image2: TImage;
     Label1: TLabel;
+    Label2: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
   private
 
   public
@@ -40,17 +44,37 @@ begin
   close;
 end;
 
+procedure TForm1.Image2Click(Sender: TObject);
+begin
+
+end;
+
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  eps := strtofloat(Edit2.text);
-  x := strtofloat(Edit1.text);
-     f := x; sum := f; k := 2;
-   while abs(f) >= eps do
-     begin
-       f := k * (x ** k);
-       sum := sum + f;
-       k := k + 1;
-    end;
+   eps := strtofloat(Edit2.text);
+   x := strtofloat(Edit1.text);
+   if (x <= -0.7) or (x >= 0.25) then
+   begin
+        Label1.Caption := 'Число не в диапазоне';
+        exit;
+        //close;
+        //exit;
+   end;
+   f := x;
+   sum := f;
+   k := 2;
+
+   while abs(f) > eps do
+   begin
+     f := k * (x ** k);
+     sum := sum + f;
+     k := k + 1;
+   end;
+   Label1.Caption := floattostr(sum);
+   Label2.Caption := floattostr(k);
+   //Image1.Height := 247;
+   Image2.Height := 0; //384
+
 end;
 
 end.
