@@ -1,0 +1,10 @@
+object Form2: TForm2
+  Left = 683
+  Height = 183
+  Top = 244
+  Width = 348
+  Caption = 'Form2'
+  Color = clHighlight
+  DesignTimePPI = 120
+  LCLVersion = '3.4.0.0'
+end
