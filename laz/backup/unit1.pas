@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, math;
 
 type
 
@@ -16,8 +16,8 @@ type
     Button2: TButton;
     Edit1: TEdit;
     Edit2: TEdit;
-    Image1: TImage;
     Label1: TLabel;
+    procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
 
@@ -27,6 +27,7 @@ type
 
 var
   Form1: TForm1;
+  eps, sum, f, x, k, iterations: real;
 
 implementation
 
@@ -37,6 +38,32 @@ implementation
 procedure TForm1.Button2Click(Sender: TObject);
 begin
   close;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  // Ввод данных
+   eps := StrToFloat(Edit2.Text);
+   x := StrToFloat(Edit1.Text);
+
+   // Инициализация переменных
+   f := x;
+   sum := f;
+   k := 2;
+   iterations := 0; // Счетчик итераций
+
+   // Цикл вычислений
+   while abs(f) >= eps do
+   begin
+    f := k * (x ** k);
+    sum := sum + f;
+    k := k + 1;
+    iterations := iterations + 1; // Увеличиваем счетчик
+   end;
+
+   // Вывод результатов
+   ShowMessage('Количество итераций: ' + IntToStr(iterations) +
+          '\nСумма ряда: ' + FloatToStr(sum));
 end;
 
 end.
