@@ -18,6 +18,7 @@ type
     Edit2: TEdit;
     Image1: TImage;
     Image2: TImage;
+    Image3: TImage;
     Label1: TLabel;
     Label2: TLabel;
     procedure Button1Click(Sender: TObject);
@@ -31,7 +32,7 @@ type
 
 var
   Form1: TForm1;
-  eps, sum, f, x, k: real;
+  eps, sum, f, x, k, nul: real;
 
 implementation
 
@@ -51,15 +52,30 @@ end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
+
+  //проверка введения цифр
+  if (eps = nul) or (x = nul) then
+  begin
+        Image2.Height := 0; //384
+        Image3.Height := 184; //384
+        Label1.Caption := 'Блин бро впиши цифры';
+  end;
+
+  //проверка того что число в диапазоне
    eps := strtofloat(Edit2.text);
    x := strtofloat(Edit1.text);
    if (x <= -0.7) or (x >= 0.25) then
    begin
-        Label1.Caption := 'FATAL ERROR blin, число не в диапазоне';
+        Image2.Height := 0; //384
+        Image3.Height := 184; //384
+        Label1.Caption := 'Число не в диапазоне';
         exit;
         //close;
         //exit;
    end;
+
+
+   //счет функции
    f := x;
    sum := f;
    k := 2;
@@ -70,12 +86,12 @@ begin
      sum := sum + f;
      k := k + 1;
    end;
+
+   //вывод ответа
    Label1.Caption := floattostr(sum);
    Label2.Caption := floattostr(k);
-   //Image1.Height := 247;
+   Image1.Height := 247;
    Image2.Height := 0; //384
-
-end;
-
+  end;
 end.
 
