@@ -18,6 +18,8 @@ type
     Edit2: TEdit;
     Label1: TLabel;
     Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -53,7 +55,6 @@ begin
   //проверка введения цифр
   if (eps = nul) or (x = nul) then
   begin
-        Image2.Height := 0; //384
         Label1.Caption := 'Блин бро впиши цифры';
   end;
 
@@ -82,6 +83,8 @@ begin
    end;
 
    //вывод ответа
+   Label4.Caption := 'Зн. функции:';
+   Label3.Caption := 'Кол-во итераций:';
    Label1.Caption := floattostr(sum);
    Label2.Caption := floattostr(k);
   end;

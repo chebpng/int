@@ -18,6 +18,8 @@ type
     Edit2: TEdit;
     Label1: TLabel;
     Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -61,7 +63,8 @@ begin
    x := strtofloat(Edit1.text);
    if (x <= -0.7) or (x >= 0.25) then
    begin
-        Label1.Caption := 'Число не в диапазоне';
+        Label1.Caption := ' ';
+        Label4.Caption := 'Число не в диапазоне';
         exit;
         //close;
         //exit;
@@ -81,6 +84,8 @@ begin
    end;
 
    //вывод ответа
+   Label4.Caption := 'Зн. функции:';
+   Label3.Caption := 'Кол-во итераций:';
    Label1.Caption := floattostr(sum);
    Label2.Caption := floattostr(k);
   end;
